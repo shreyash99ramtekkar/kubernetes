@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nginx-proxysample
+  labels:
+    app: nginx-proxysample
+    tier: frontendapp
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      tier: frontendapp
+  template:
+    metadata:
+      labels:
+        tier: frontendapp
+    spec:
+      containers:
+        - name: nginx
+          image: nginx

@@ -1,0 +1,5 @@
+ 2008  kubectl get roles --output yaml
+ 2010  kubectl get roles
+ 2015  kubectl get rolebindings
+ 2024  kubectl get clusterroles
+ 2026  kubectl get clusterrolebinding

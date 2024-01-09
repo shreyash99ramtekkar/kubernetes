@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: podtest
+spec:
+  containers:
+    - name: podctl
+      image: nginx
+      resources:
+        limits:
+          memory: "400Mi"
+          cpu: "600m"
+        requests:
+          memory: "300Mi"
+          cpu: "200m"

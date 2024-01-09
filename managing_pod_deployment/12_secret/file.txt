@@ -1,0 +1,1 @@
+kubectl create secret generic appusersecret --from-file=/home/sramtekkar/kubernetes/managing_pod_deployment/12_secret/secret.properties -n pods-deployment

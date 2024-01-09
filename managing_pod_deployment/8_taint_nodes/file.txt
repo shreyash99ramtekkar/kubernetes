@@ -1,0 +1,2 @@
+kubectl taint nodes ip k1=v1:NoSchedule
+kubectl apply -f taint.yaml -n pods-deployment

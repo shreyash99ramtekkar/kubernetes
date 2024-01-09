@@ -1,0 +1,17 @@
+#specs to configure pod to use the taint key that we have specified
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tomcatserverpod
+  labels:
+    env: test
+spec:
+  containers:
+    - name: tomcat
+      image: tomcat
+      imagePullPolicy: IfNotPresent
+  tolerations:
+    - key: "k1"
+      operator: "Exists"
+      effector: "NoSchedule"
+

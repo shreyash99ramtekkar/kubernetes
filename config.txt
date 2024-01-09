@@ -1,0 +1,96 @@
+sudo apt install docker.io
+
+#All
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
+sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
+sudo apt-get install kubeadm=1.25.0-00 kubelet=1.25.0-00 kubectl=1.25.0-00
+sudo apt-mark hold kubeadm kubelet kubectl
+
+or
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+
+
+
+
+free -h
+sudo swapoff -a
+vim /etc/fstab --comment only swap line
+sudo apt install docker
+sudo systemctl enable docker
+sudo apt install docker
+
+dpkg --get-selections | grep docker
+dpkg --get-selections | grep kube
+
+
+#master
+#You pass the --pod-network-cidr=10.244.0.0/16 network parameters to the kubeadm init command to set requirements for the flannel installation that you will install in an upcoming task. Flannel is a third-party container network interface (CNI) plugin. Classless Inter-Domain Routing (CIDR) is a representation of an IP address range.
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+
+
+#Cluster master 
+follow the instratuction and join to the worker node to master
+#The $HOME variable represents the home directory path of the current user. The . prefix in the directory name indicates that it is a hidden directory.
+mkdir -p $HOME/.kube
+
+#The /etc/kubernetes/admin.conf file contains cluster administration credentials generated during the control plane initialization process. The credentials are copied to a user’s home directory to allow that user to perform cluster operations as a regular (non-root) user.
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+
+#The administrator user can now execute all kubectl commands against the cluster.
+sudo chown administrator:administrator $HOME/.kube/config
+
+#The cluster node status returned the names of the three cluster nodes in a NotReady state as the cluster network plug-in is not installed.
+kubectl get nodes
+
+
+#The kubectl apply -f command option creates a resource by applying the contents of the specified configuration file.
+
+#In addition to the existing IP network, a Kubernetes cluster requires its own network infrastructure that functions as an overlay network. There are several networking vendor solutions that can be deployed on a Kubernetes cluster. In this challenge, you will use the flannel virtual network plug-in.
+
+#https://docs.openshift.com/container-platform/3.4/architecture/additional_concepts/flannel.html
+
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
+
+
+
+#Multiple cluster config:
+kubectl config --kubeconfig=configdemo set-cluster kubernetes --server=https://1.2.3.4 --certificate-authority=ca.crt
+kubectl config --kubeconfig=configdemo set-cluster testing --server=https://5.6.7.8 --insecure-skip-tls-verify
+
+#adding user
+kubectl config --kubeconfig=configdemo set-credentials kubernetes-admin --client-certificate=ca.cert --client-key=ca.key
+kubectl config --kubeconfig=configdemo set-context kubernetes-admin@kubernetes --cluster=kubernetes --namespace=frontend --user=kubernetes-admin
+
+kubectl config --kubeconfig=configdemo view
+
+
+kubectl config --kubeconfig=configdemo use-context kubernetes-admin@kubernetes
+
+
+
+#Get the credential to use kubernetes api using rest http client
+
+kubectl describe secret
+APISERVER=$(kubectl config view --minify | grep server | cut -f 2- -d':' | tr -d " ")
+SECRET_NAME=$(kubectl get secrets | grep ^default | cut -f1 -d' ')
+TOKEN=$(kubectl describe secret $SECRETE_NAME | grep -E '^token' | cut -f2 -d':' | tr -d" ")
+curl $APISERVER/api --header "Authorization: Bearer $TOKEN" --insecure
+
+
+#proxy mode kubectl (always uses stored api server location)
+kubectl proxy --port=8080
+
+kubeadm token create –print-join-command
+
+
+
+
+#Multiple master setup
+#check the connectivity
+nc -v loadbalancer_url port
+
+#check the kubeadm and kubectl is installed
+kubeadm version
+kubectl version
+

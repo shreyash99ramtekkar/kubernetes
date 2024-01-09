@@ -1,0 +1,4 @@
+kubectl apply -f replicated.yaml  -n scaling
+kubectl get statefulset -n scaling
+ kubectl logs mysql-0 -n scaling
+kubectl exec mysql-0 -n scaling -- mv /usr/bin/mysql /usr/bin/mysql.backup

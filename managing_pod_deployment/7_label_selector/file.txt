@@ -1,0 +1,3 @@
+kubectl apply -f label_selector.yaml -n pods-deployment
+kubectl get pods -o wide -n pods-deployment
+you can see that each pod is scheduled on the different node

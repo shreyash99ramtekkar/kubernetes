@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: testjobs
+spec:
+  template:
+    metadata:
+      name: testjobs
+    spec:
+      containers:
+        - name: jobcontainer
+          image: ubuntu:latest
+          command:
+            - "/bin/bash"
+            - "-c"
+            - "for item in {1..9}; do echo $item; done;"
+      restartPolicy: Never 

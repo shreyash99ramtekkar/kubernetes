@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: tomcat-daemonset
+  labels:
+    app: tomcatd
+spec:
+  selector:
+    matchLabels:
+      app: tomcatd
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: tomcatd
+    spec:
+      containers:
+        - name: tomcatd
+          image: tomcat:latest
+      terminationGracePeriodSeconds: 60

@@ -1,0 +1,1 @@
+kubectl scale deployment.v1.apps/tomcat-deployment --replicas=5 --record -n scaling
