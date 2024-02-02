@@ -1,0 +1,8 @@
+kubectl apply -f pod.yaml  -n storage-volume
+kubectl get pods -n storage-volume
+#going to the container terminal
+kubectl exec -n storage-volume -it copy-demo -- bash
+#copy the file from local to pod
+kubectl cp sample.txt copy-demo:/tmp -n storage-volume
+#copy pod file to local
+kubectl cp copy-demo:tmp/sample.txt /tmp/text.txt -n storage-volume

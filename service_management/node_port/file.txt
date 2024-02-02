@@ -1,0 +1,2 @@
+kubectl get svc -n svc-mngt
+kubectl get svc -n svc-mngt

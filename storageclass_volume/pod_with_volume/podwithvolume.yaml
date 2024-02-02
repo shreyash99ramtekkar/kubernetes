@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: podwithvolume
+spec:
+  volumes:
+    - name: shared-data-volume
+      emptyDir: {}
+  containers:
+    - name: containerwithvolume
+      image: nginx
+      volumeMounts:
+        - name: shared-data-volume
+          mountPath: /usr/share/nginx/html
+  hostNetwork: true
+  dnsPolicy: Default

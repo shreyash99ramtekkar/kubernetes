@@ -1,0 +1,2 @@
+kubectl get pod -n audit-custom-log
+kubectl describe pod nginx-sample-658854b69-5p4b7 -n audit-custom-log

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: multiportservice
+spec:
+  selector:
+    app: sampleservice
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 9090
+    - name: https
+      protocol: TCP
+      port: 443
+      targetPort: 9092

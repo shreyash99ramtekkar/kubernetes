@@ -1,0 +1,7 @@
+kubectl create secret docker-registry testregistrykey --docker-server=hub.docker.com --docker-username=codyblackwelltest --docker-password=qwerty@123 --docker-email=info@test.com
+kubectl get secrets testregistrykey
+kubectl get secrets testregistrykey --namespace svc-mngt
+#add imagepullsecret to the service account
+kubectl patch serviceaccount sampleaccount --namespace=svc-mngt -p '{"imagePullSecrets": [{"name":"testregistrykey"}]}'
+#dump the service account
+kubectl get serviceaccounts sampleaccount --namespace=svc-mngt -o yaml > dump.yaml

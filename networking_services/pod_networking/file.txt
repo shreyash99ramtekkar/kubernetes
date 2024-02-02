@@ -1,0 +1,2 @@
+kubectl apply -f pod_networking.yaml -n pod-networking
+kubectl get pods -o wide -n pod-networking

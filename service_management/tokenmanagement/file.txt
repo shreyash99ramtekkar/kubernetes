@@ -1,0 +1,2 @@
+kubectl describe serviceaccount sampleaccount -n svc-mngt
+kubectl delete secret samplesecret -n svc-mngt 

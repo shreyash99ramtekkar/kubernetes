@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tcp-probe-pod
+  labels:
+    env: test
+    app: tcp-live-probe
+    release: canary
+    dept: ops
+spec:
+  containers:
+    - name: tcp-probe-pod
+      image: k8s.gcr.io/goproxy:0.1
+      ports:
+        - containerPort: 8080
+      readinessProbe:
+        tcpSocket:
+          port: 8080
+        initialDelaySeconds: 10
+        periodSeconds: 16
+      livenessProbe:
+        tcpSocket:
+          port: 8080
+        initialDelaySeconds: 20
+        periodSeconds: 25

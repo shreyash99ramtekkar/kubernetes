@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hostpathsample
+spec:
+  containers:
+    - image: k8s.gcr.io/test-webserver
+      name: hostpath-container
+      volumeMounts:
+        - mountPath: /test-pv
+          name: hp-volume
+  volumes:
+    - name: hp-volume
+      hostPath:
+        path: /tmp/data
+        type: Directory
+

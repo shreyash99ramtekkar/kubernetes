@@ -1,0 +1,2 @@
+#Upgrade the dns service from kubedns to coredns
+kubeadm upgrade plan --feature-gates CoreDNS=true

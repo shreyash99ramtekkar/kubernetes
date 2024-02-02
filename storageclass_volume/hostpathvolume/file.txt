@@ -1,0 +1,5 @@
+mkdir /tmp/data
+kubectl apply -f hostpathvolume.yaml -n storage-volume
+
+# the hostvolume is pointing to docker container of the minikube and there we dont have /tmp/data folder
+https://stackoverflow.com/questions/48927312/mountvolume-setup-failed-for-volume-mongo-hostpath-type-check-failed-mongo

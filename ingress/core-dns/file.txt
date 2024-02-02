@@ -1,0 +1,1 @@
+kubeadm init --v=1 --ignore-preflight-errors-Swap --config=config.yaml

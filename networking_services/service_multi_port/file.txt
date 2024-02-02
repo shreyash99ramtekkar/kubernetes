@@ -1,0 +1,2 @@
+kubectl apply -f service_multiple_port.yaml -n pod-networking
+kubectl get svc -n pod-networking

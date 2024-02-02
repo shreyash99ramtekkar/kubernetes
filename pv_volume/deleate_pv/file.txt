@@ -1,0 +1,4 @@
+kubectl get pvc
+kubectl delete pvc name_pvc
+kubectl get pv
+kubectl delete pv pv_name

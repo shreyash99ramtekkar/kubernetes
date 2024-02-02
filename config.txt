@@ -10,7 +10,10 @@ or
 https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
 
 
+echo "net.bridge.bride-nf-call-iptables=1" | sudo tee -a /etc/sysctl.conf
 
+sudo sysctl -p
+#if throws the error restart machine
 
 free -h
 sudo swapoff -a
@@ -93,4 +96,23 @@ nc -v loadbalancer_url port
 #check the kubeadm and kubectl is installed
 kubeadm version
 kubectl version
+
+#initialzie the control plane
+
+kubeadm init --control-plane-endpoint loadbalancer_url:port
+
+
+#install cni weave
+
+$ kubectl apply -f https://github.com/weaveworks/weave/releases/download/$(kubectl version | base64 | tr -d '
+\n')/weave-daemonset-k8s.yaml
+
+
+#get pods in wide mode
+kubectl get pod -n kube-system -w
+
+
+#add second master node to control plane
+#check the node is added to target group in aws
+
 

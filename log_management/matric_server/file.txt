@@ -1,0 +1,3 @@
+kubectl get deployments -n kube-system
+kubectl apply -f components.yaml -n kube-system
+kubectl top nodes

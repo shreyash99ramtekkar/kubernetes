@@ -1,0 +1,2 @@
+kubectl apply -f ingress_lb_app.yaml -n ingress
+kubectl get svc -n ingress

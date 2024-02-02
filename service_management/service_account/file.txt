@@ -1,0 +1,3 @@
+kubectl get serviceaccounts --namespace=svc-mngt
+kubectl apply -f serviceaccount.yaml
+kubectl describe secrets -n svc-mngt 

@@ -1,0 +1,8 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: externalservice
+  namespace: svc-mngt
+spec:
+  type: ExternalName
+  externalName: my.dbservices.accountsnow.com

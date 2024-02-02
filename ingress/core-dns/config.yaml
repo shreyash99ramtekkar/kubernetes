@@ -1,0 +1,11 @@
+apiVersion: kubeadm.k8s.io/v1alpha3
+kind: InitConfiguration
+nodeRegistration:
+  kubeletExtraArgs:
+    "v": "2"
+    "feture-gates": "CoreDNS-true"
+---
+apiVersion: kubeadm.k8s.io/v1alpha3
+kind: ClusterConfiguration
+networking:
+  podSubnet: "193.168.0.0/16"

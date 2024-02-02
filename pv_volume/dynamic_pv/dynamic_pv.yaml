@@ -1,0 +1,40 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ebs-storage-class
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: io1
+  iopsPerGB: "10"
+  fsType: xfs
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: aws-pv-sc
+labels:
+  type: sc
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ebs-storage-class
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: aws-pvc-sc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
+  storageClassName: ebs-storage-class
+  selector:
+    matchLabels:
+      type: sc
+

@@ -1,0 +1,4 @@
+you have to create first the pv using the ebs
+ then you can apply this pv claim file
+kubectl apply -f pvclaim.yaml
+kubectl get pvc
