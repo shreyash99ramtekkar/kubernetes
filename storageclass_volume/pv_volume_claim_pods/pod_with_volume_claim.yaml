@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sample-pv-pod
+spec:
+  volumes:
+    - name: sample-pv-storage
+      persistentVolumeClaim:
+        claimName: test-pv-claim
+  containers:
+    - name: pvc-container
+      image: nginx
+      ports:
+        - containerPort: 90
+          name: "web-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: sample-pv-storage
+

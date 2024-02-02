@@ -1,0 +1,1 @@
+kubectl apply -f dynamic_pv.yaml

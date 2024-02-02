@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sampleapppod
+  labels:
+    app: sampleapp
+spec:
+  nodeName: minikube
+  containers:
+    - name: samplecontainer
+      image: tomcat

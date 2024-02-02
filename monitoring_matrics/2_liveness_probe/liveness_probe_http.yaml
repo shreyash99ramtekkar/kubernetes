@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: http-probe-pod
+  labels:
+    test: httpget
+spec:
+  containers:
+    - name: http-probe-pod
+      image: registry.k8s.io/liveness
+      args:
+        - /server
+      livenessProbe:
+        httpGet:
+          path: /healthz
+          port: 8080
+          httpHeaders:
+            - name: Custom-Header
+              value: acceptrequest
+        initialDelaySeconds: 3
+        periodSeconds: 3

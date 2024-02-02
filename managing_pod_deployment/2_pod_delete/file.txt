@@ -1,0 +1,5 @@
+kubectl get pods -n pods-deployment
+kubectl edit pods nginx-proxysample-9kzxf -n pods-deployment
+Edit the label used for the selector in the metadata as isolated in the config file and save it
+kubectl get pods -n pods-deployment
+You will see that now the pod is not managed by that replicaset and new pod has been created

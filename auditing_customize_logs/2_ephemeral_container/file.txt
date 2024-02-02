@@ -1,0 +1,4 @@
+kubectl run debugpod-demo --image=k8s.gcr.io/pause:3.1 --restart=Never -n audit-custom-log
+kubectl debug -i -t debugpod-demo --image=busybox --target=debugpod-demo -n audit-custom-log
+
+#if you get the error for alpha debug command saying its not enable please watch this: https://springboard.percipio.com/courses/e65aa30c-6534-422a-9872-3d57198d5e6f/videos/42b14ec2-808d-40de-ba7d-43f49dde3ec0

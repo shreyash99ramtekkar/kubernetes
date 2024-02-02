@@ -1,0 +1,3 @@
+check if the pod is manage by replicaset 
+kubectl get pod nginx-proxysample-9kzxf -n pods-deployment -o yaml | grep -A 5 owner
+kubectl apply -f replicaset.yaml -n pods-deployment

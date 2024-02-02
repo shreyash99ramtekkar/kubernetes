@@ -1,0 +1,8 @@
+# Get the logs from single container
+kubectl logs podsample -n logging
+# get the logs from multicontainer pods
+kubectl logs podsample --all-containers=True -n logging
+Get the pods logs from a specific time in past
+kubectl logs --since=1h podsample -n logging
+Get the logs from mutiple containers of pod which is having specific labels
+kubectl logs -f -l app=nginx --all-containers=true -n application

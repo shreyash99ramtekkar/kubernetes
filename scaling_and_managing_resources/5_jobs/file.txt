@@ -1,0 +1,3 @@
+kubectl apply -f jobsexamplev7.yaml -n scaling
+kubectl get pod -n scaling
+kubectl describe job -n scaling

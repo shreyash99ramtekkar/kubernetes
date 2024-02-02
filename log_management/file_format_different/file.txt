@@ -1,0 +1,2 @@
+kubectl describe pod pod-different-file-format-log -n logging
+kubectl apply -f different_fileformat.yaml -n logging

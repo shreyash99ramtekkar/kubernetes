@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-config3
+  namespace: application
+data:
+  key1.data: high
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-config4
+  namespace: application
+data:
+  log.level: WARNING

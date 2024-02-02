@@ -1,0 +1,1 @@
+kubectl apply -f pod_service.yaml -n pod-networking

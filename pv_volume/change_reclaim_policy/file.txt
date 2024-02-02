@@ -1,0 +1,2 @@
+kubectl patch pv name_pv -p {"spec": {"persistentVolumeReclaimPolicy":"Delete"}}
+kubectl get pv

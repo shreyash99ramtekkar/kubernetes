@@ -1,0 +1,42 @@
+#create a simple Ingress resource 
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: simple-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /sample
+            pathType: Prefix
+            backend: 
+              service:
+                name: testinggressservice
+                port:
+                  number: 80
+
+
+---
+#assume that we want a resource backend to another Kubernetes resource within the same namespace as the Ingress object.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-with-backend
+spec:
+  defaultBackend:
+    resource:
+      apiGroup: k8s.example.com
+      kind: StorageBucket
+      name: static-content
+  rules:
+    - http:
+        paths:
+          - path: /icons
+            pathType: ImplementationSpecific
+            backend:
+              resource:
+                apiGroup: k8s.example.com
+                kind: StroageBucket
+                name: web-assets

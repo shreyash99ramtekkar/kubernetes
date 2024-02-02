@@ -1,0 +1,2 @@
+kubectl apply -f daemonsetv6.yaml -n scaling
+kubectl get daemonset -n scaling -o yaml

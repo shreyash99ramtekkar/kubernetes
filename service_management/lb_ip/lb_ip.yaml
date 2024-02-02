@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: webserverlbservice
+spec:
+  selector:
+    run: webservernlb
+  ports:
+    - port: 90
+      targetPort: 90
+      protocol: TCP
+  type: LoadBalancer

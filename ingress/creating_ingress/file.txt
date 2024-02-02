@@ -1,0 +1,2 @@
+kubectl apply -f ingress.yaml -n ingress
+kubectl describe ingress ingress-with-backend -n ingress

@@ -1,0 +1,6 @@
+
+kubectl create deployment sampleservice --image=busybox -ns audit-custom-log
+kubectl expose deployment sampleservice --port=8000 -ns audit-custom-log
+kubectl get service sampleservice -ns audit-custom-log
+#get the cluster ip and port and run the telepresece command
+telepresence --run curl http://sample-service:8000

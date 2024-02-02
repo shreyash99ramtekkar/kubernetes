@@ -1,0 +1,1 @@
+kubectl apply -f schedule_manually.yaml  -n pods-deployment

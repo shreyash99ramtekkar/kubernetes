@@ -1,0 +1,4 @@
+kubectl apply -f deployment.yaml -n pods-deployment
+kubectl get rs -n pods-deployment
+kubectl scale deployment.v1.apps/nginxappdeployment --replicas=6 -n pods-deployment
+kubectl get rs -n pods-deployment

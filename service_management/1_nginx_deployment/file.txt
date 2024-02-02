@@ -1,0 +1,6 @@
+kubectl apply -f nginx.yaml -n svc-mngt
+kubectl get pods -l run=testnginx -o wide -n svc-mngt
+kubectl expose deployment/testnginx
+kubectl expose -n svc-mngt deployment/nginx-deployment
+kubectl get svc nginx-deployment -n svc-mngt
+Get the ip of the exposed service 

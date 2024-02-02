@@ -1,0 +1,4 @@
+ConfigMapGenerator:
+  - name: sample-config-generator
+    files:
+      - configmapdir/generatorconfig.properties

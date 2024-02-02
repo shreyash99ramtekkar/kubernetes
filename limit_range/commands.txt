@@ -1,0 +1,4 @@
+Label creation using kubectl
+kubectl run developmentname --image=imagename --replicas=numberofReplicas --labels='key=value,key=value'
+Labels application: labels.yml
+kubectl get pods --show-labels --namespace customenamespace1

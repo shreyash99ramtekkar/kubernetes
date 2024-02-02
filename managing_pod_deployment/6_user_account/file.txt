@@ -1,0 +1,3 @@
+openssl genrsa -out shreyashr.key 2048
+sudo openssl req -new -key shreyashr.key -out shreyashr-csr.pem -subj "/CN=shreyashr"
+openssl x509 -req -in shreyashr.key -CA -in shreyashr.key -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out shreyashr.crt -days 500

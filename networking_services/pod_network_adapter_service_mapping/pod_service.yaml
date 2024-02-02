@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: servicewithoutselector
+spec:
+  ports:
+    - protocol: TCP
+      port: 90
+      targetPort: 9090
+---
+#Since the service is not having selector the endpoint object will not be created automatically so we have to create one
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: servicewithoutselector
+subsets:
+  - addresses:
+      - ip: 172.31.59.112
+    ports:
+      - port: 9090

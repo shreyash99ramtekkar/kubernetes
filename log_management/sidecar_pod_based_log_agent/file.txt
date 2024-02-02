@@ -1,0 +1,2 @@
+kubectl apply -f pod_based_logging_agent.yaml -n logging
+Inspecting application logs

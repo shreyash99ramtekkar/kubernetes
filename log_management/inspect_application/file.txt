@@ -1,0 +1,2 @@
+kubectl get events -n logging
+kubectl get logs pod_name -c container_name

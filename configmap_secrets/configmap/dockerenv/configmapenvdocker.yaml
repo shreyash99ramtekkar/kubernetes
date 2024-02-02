@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sample-pod-env
+spec:
+  containers:
+    - name: sample-env-container
+      image: k8s.gcr.io/busybox
+      command: ["/bin/sh", "-c", "env"]
+      env:
+        - name: KEY_FROM_CONFIG
+          valueFrom:
+            configMapKeyRef:
+              name: env-sample
+              key: key.sample1
+  restartPolicy: Never

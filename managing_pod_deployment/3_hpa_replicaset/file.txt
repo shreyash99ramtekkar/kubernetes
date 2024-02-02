@@ -1,0 +1,2 @@
+kubectl apply -f deployment.yaml -n pods-deployment
+kubectl autoscale deployment nginx-deployment --cpu-percent=60 --min=3 --max=5 -n pods-deployment

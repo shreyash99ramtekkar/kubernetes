@@ -1,0 +1,6 @@
+kubectl apply -f env_pod.yaml -n pods-deployment
+ ls
+ kubectl get pods
+ kubectl get pods -n pods-deployment
+ kubectl exec -n pods-deployment -it ubuntu -- /bin/bash 
+
